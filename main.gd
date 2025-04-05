@@ -28,8 +28,8 @@ func createGrid():
   for i in gridWidth:
     for j in gridHeight:
       roomGrid[i][j] = BasicRoom.instantiate()
-      roomGrid[i][j].position.x = i*5
-      roomGrid[i][j].position.z = j*5
+      roomGrid[i][j].position.x = i*10
+      roomGrid[i][j].position.z = j*10
       $RoomsList.add_child(roomGrid[i][j])
       print("room added")
   pass
