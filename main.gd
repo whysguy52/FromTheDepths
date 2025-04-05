@@ -18,18 +18,42 @@ func _ready() -> void:
     roomGrid.append([])
     for j in gridHeight:
       roomGrid[i].append(Node)
-  createGrid()
+  roomGrid[row][column] = BasicRoom.instantiate()
+  $RoomsList.add_child(roomGrid[row][column])
   numOfRooms = (randi() % 2) + 5 + (level * 2.6)
-  print(numOfRooms)
+  createGrid()
 
 
 func createGrid():
   var roomsLeft = numOfRooms
-  for i in gridWidth:
-    for j in gridHeight:
-      roomGrid[i][j] = BasicRoom.instantiate()
-      roomGrid[i][j].position.x = i*10
-      roomGrid[i][j].position.z = j*10
-      $RoomsList.add_child(roomGrid[i][j])
-      print("room added")
+  while roomsLeft > 0:
+    var roomSelect = randi() % 4 + 1 # generates an even number, which is up, down, left or right
+    match roomSelect:
+      1:
+        if row-1 > 0 and roomGrid[row-1][column] is not Node3D :
+          row -= 1
+          createRoom()
+          roomsLeft -= 1
+      2:
+        if column-1 > 0 and roomGrid[row][column-1] is not Node3D:
+          column -= 1
+          createRoom()
+          roomsLeft -= 1
+      3:
+        if column+1 < 10 and roomGrid[row][column+1] is not Node3D:
+          column += 1
+          createRoom()
+          roomsLeft -= 1
+      4:
+        if row+1 < 10 and roomGrid[row+1][column] is not Node3D:
+          column += 1
+          createRoom()
+          roomsLeft -= 1
+    print(roomsLeft)
+
+func createRoom():
+  roomGrid[row][column] = BasicRoom.instantiate()
+  roomGrid[row][column].position.z = row*10
+  roomGrid[row][column].position.x = row*10
+  $RoomsList.add_child(roomGrid[row][column])
   pass

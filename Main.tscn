@@ -26,7 +26,8 @@ shadow_enabled = true
 environment = SubResource("Environment_r0du0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 6.18172e-08, -6.18172e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 22, 20, 0)
+transform = Transform3D(-1, 6.18172e-08, -6.18172e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 22, 20, -10)
+fov = 112.5
 size = 29.6746
 
 [node name="RoomsList" type="Node3D" parent="."]
