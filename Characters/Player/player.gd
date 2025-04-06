@@ -5,19 +5,29 @@ var heldWeapon
 var mouseSens = 0.0005
 var speed = 250
 
+#references
 var cameraNod
 var animPlayer:AnimationPlayer
+var handL
+var handR
 
 func _ready() -> void:
-  #temprary load sword
+  #load sword
   sword = load("res://Assets/Items/Weapons/Sword/sword.tscn")
-  animPlayer = $Player2/AnimationPlayer
-  cameraNod = $CameraNod
   heldWeapon = sword.instantiate()
   $Player2/HandR.add_child(heldWeapon)
-  $Player2/AnimationPlayer.current_animation = "Idle"
-  $Player2/AnimationPlayer.speed_scale = 1
-  $Player2/AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
+
+  #references
+  cameraNod = $CameraNod
+  handL = $Player2/HandL
+  handR = $Player2/HandR
+
+  #store animation player
+  animPlayer = $Player2/AnimationPlayer
+  animPlayer.current_animation = "Idle"
+  animPlayer.speed_scale = 1
+  animPlayer.animation_finished.connect(_on_animation_player_animation_finished)
+
   Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
   pass
 
@@ -59,6 +69,8 @@ func player_movement(delta):
   velocity = direction.normalized() * speed * delta
   move_and_slide()
 
+func picupweapon(weapon:Node3D):
+  pass
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
   if anim_name.contains("swing1"):
@@ -73,7 +85,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     print("unknown")
     #animPlayer.assigned_animation = "Idle"
   pass
-
 
 func _on_lmb_wait_timer_timeout() -> void:
   animPlayer.play("Idle")
