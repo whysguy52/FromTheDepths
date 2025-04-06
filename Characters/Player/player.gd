@@ -72,7 +72,8 @@ func player_movement(delta):
   move_and_slide()
 
 func check_mouse_buttons():
-  if Input.is_action_just_pressed("mouse_rmb") and animPlayer.assigned_animation.contains("Idle"):
+  if Input.is_action_just_pressed("mouse_rmb"):
+    $lmb_wait_timer.stop()
     animPlayer.play("block")
   elif  Input.is_action_just_released("mouse_rmb"):
     animPlayer.play_backwards("block")
