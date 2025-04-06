@@ -30,7 +30,6 @@ func createGrid():
   var roomsLeft = numOfRooms
   while roomsLeft > 0:
     var roomSelect = randi() % 4 + 1 # generates an even number, which is up, down, left or right
-    print("Room Select: " + str(roomSelect))
     match roomSelect:
       1:
         if row-1 >= 0 and roomGrid[row-1][column] is not Node3D :
@@ -52,7 +51,6 @@ func createGrid():
           row += 1
           createRoom()
           roomsLeft -= 1
-    print("rooms left: " + str(roomsLeft))
 
 func createRoom():
   roomGrid[row][column] = BasicRoom.instantiate()

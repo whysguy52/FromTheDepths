@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://d1h0x31qje14x"]
+[gd_scene load_steps=6 format=4 uid="uid://d1h0x31qje14x"]
 
 [ext_resource type="Texture2D" uid="uid://djrtxx1qxq8pd" path="res://Assets/Rooms/BasicRoom/dirt.png" id="1_kjxkq"]
 
@@ -40,9 +40,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bqpo0")
 
-[node name="BasicRoom" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjxkq"]
+size = Vector3(10, 1, 10)
+
+[node name="BasicRoom" type="StaticBody3D"]
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 2, 0)
 mesh = SubResource("ArrayMesh_x3fht")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_kjxkq")
