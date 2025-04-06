@@ -10,14 +10,5 @@ script = ExtResource("1_h4rq7")
 
 [node name="bat" parent="." instance=ExtResource("1_4kwq8")]
 
-[node name="Skeleton3D" parent="bat/Armature" index="0"]
-bones/0/rotation = Quaternion(2.07818e-08, -2.06795e-07, 0.5, 0.866025)
-bones/1/rotation = Quaternion(0.866025, -0.5, -1.21688e-07, -4.62364e-08)
-
-[node name="AnimationPlayer" parent="bat" index="2"]
-autoplay = "flap"
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_7yili")
-
-[editable path="bat"]
