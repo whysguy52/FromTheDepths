@@ -21,3 +21,9 @@ current = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505932, 0)
 shape = SubResource("CapsuleShape3D_6mep6")
+
+[node name="lmb_wait_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="lmb_wait_timer" to="." method="_on_lmb_wait_timer_timeout"]
