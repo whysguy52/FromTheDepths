@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc564k4gtdqx2"]
+
+[ext_resource type="PackedScene" uid="uid://dwjrrtkl3u676" path="res://Assets/Items/Weapons/Sword/sword_basic.blend" id="1_w23hw"]
+
+[node name="Sword" type="Node3D"]
+
+[node name="sword_basic" parent="." instance=ExtResource("1_w23hw")]

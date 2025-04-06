@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://vy527gfvfjxc"]
+
+[ext_resource type="PackedScene" uid="uid://dq3sdljl0j84r" path="res://Characters/Player/Player.blend" id="1_6xdwp"]
+[ext_resource type="Script" uid="uid://bcrixm47jgl1l" path="res://Characters/Player/player.gd" id="2_j341n"]
+
+[node name="Player" instance=ExtResource("1_6xdwp")]
+script = ExtResource("2_j341n")
+
+[node name="HandR" parent="." index="2"]
+transform = Transform3D(1, 9.5006e-08, 4.15285e-15, 0, -4.37114e-08, 1, 9.5006e-08, -1, -4.37114e-08, 0.3, 0.5, -0.2)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "Idle"
+
+[node name="Camera3D" type="Camera3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 3)
+current = true
