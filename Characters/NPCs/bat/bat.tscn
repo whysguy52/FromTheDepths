@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7wk186x36kuu"]
+
+[ext_resource type="PackedScene" uid="uid://c6nnfjamsx5kv" path="res://Characters/NPCs/bat/bat.blend" id="1_4kwq8"]
+[ext_resource type="Script" uid="uid://bnxdi51a6ujyh" path="res://Characters/NPCs/bat/bat.gd" id="1_h4rq7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7yili"]
+
+[node name="Bat" type="RigidBody3D"]
+script = ExtResource("1_h4rq7")
+
+[node name="bat" parent="." instance=ExtResource("1_4kwq8")]
+
+[node name="Skeleton3D" parent="bat/Armature" index="0"]
+bones/0/rotation = Quaternion(2.07818e-08, -2.06795e-07, 0.5, 0.866025)
+bones/1/rotation = Quaternion(0.866025, -0.5, -1.21688e-07, -4.62364e-08)
+
+[node name="AnimationPlayer" parent="bat" index="2"]
+autoplay = "flap"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7yili")
+
+[editable path="bat"]

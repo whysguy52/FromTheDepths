@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4jhcbp8wwece"]
+
+[ext_resource type="PackedScene" uid="uid://dgxmg3bosview" path="res://Assets/Items/Weapons/Sheild/Sheild.blend" id="1_xhdys"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvym4"]
+size = Vector3(0.052, 0.502, 0.5)
+
+[node name="Shield" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501882, 0, 0)
+shape = SubResource("BoxShape3D_wvym4")
+
+[node name="Sheild" parent="." instance=ExtResource("1_xhdys")]

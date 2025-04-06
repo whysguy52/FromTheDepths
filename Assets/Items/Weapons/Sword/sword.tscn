@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bc564k4gtdqx2"]
+[gd_scene load_steps=3 format=3 uid="uid://bc564k4gtdqx2"]
 
 [ext_resource type="PackedScene" uid="uid://dwjrrtkl3u676" path="res://Assets/Items/Weapons/Sword/sword_basic.blend" id="1_w23hw"]
 
-[node name="Sword" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w23hw"]
+radius = 0.032902
+height = 0.358569
+
+[node name="Sword" type="Area3D"]
 
 [node name="sword_basic" parent="." instance=ExtResource("1_w23hw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.335639, 0)
+shape = SubResource("CapsuleShape3D_w23hw")

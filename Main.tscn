@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c77rg1kbrkq40"]
+[gd_scene load_steps=8 format=3 uid="uid://c77rg1kbrkq40"]
 
 [ext_resource type="Script" uid="uid://dbjf148nhh6lt" path="res://main.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://d1h0x31qje14x" path="res://Assets/Rooms/BasicRoom/BasicRoom.tscn" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://vy527gfvfjxc" path="res://Characters/Player/Player.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://c7wk186x36kuu" path="res://Characters/NPCs/bat/bat.tscn" id="4_cm0pq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_glv2v"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -39,3 +40,6 @@ far = 50.0
 [node name="BasicRoom" parent="RoomsList" instance=ExtResource("2_r0du0")]
 
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
+
+[node name="Bat" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2, -3)

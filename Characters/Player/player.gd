@@ -29,11 +29,9 @@ func _ready() -> void:
   handR.add_child(heldWeapon)
 
   #load sheild
-  sheild = load("res://Assets/Items/Weapons/Sheild/Sheild.blend")
-  heldSheild = sheild.instantiate()
-  handL.add_child(heldSheild)
-
-
+  sheild = load("res://Assets/Items/Weapons/Sheild/shield.tscn")
+  #heldSheild = sheild.instantiate()
+  #handL.add_child(heldSheild)
 
   #store animation player
   animPlayer.current_animation = "Idle"
@@ -43,7 +41,8 @@ func _ready() -> void:
   Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
   pass
 
-
+func _process(delta: float) -> void:
+  pass
 
 func _physics_process(delta: float) -> void:
   player_movement(delta)
@@ -61,6 +60,7 @@ func player_camera(event):
   cameraNod.rotation.x = clamp(cameraNod.rotation.x, -PI/8, PI/6)
 
 func player_movement(delta):
+
   var direction:Vector3
   var isW = Input.is_action_pressed("key_w")
   var isA = Input.is_action_pressed("key_a")
@@ -86,7 +86,7 @@ func check_mouse_buttons():
   elif Input.is_action_just_pressed("mouse_lmb") and animPlayer.assigned_animation.contains("swing2"):
     animPlayer.play("swing1")
     $lmb_wait_timer.stop()
-  print(animPlayer.assigned_animation)
+
 
 func pic_up_weapon(weapon:Node3D):
   pass
@@ -96,10 +96,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     "Idle":
       pass
     "block":
-      print("NOT starting timer")
+      pass
     _:
       $lmb_wait_timer.start()
-      print("started timer")
   return
 
 func _on_lmb_wait_timer_timeout() -> void:
