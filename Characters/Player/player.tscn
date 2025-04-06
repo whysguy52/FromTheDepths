@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://vy527gfvfjxc"]
+[gd_scene load_steps=5 format=3 uid="uid://vy527gfvfjxc"]
 
 [ext_resource type="Script" uid="uid://bcrixm47jgl1l" path="res://Characters/Player/player.gd" id="1_6mep6"]
 [ext_resource type="PackedScene" uid="uid://dq3sdljl0j84r" path="res://Characters/Player/Player.blend" id="1_ht6wf"]
 [ext_resource type="PackedScene" uid="uid://bc564k4gtdqx2" path="res://Assets/Items/Weapons/Sword/sword.tscn" id="3_aj84o"]
-[ext_resource type="PackedScene" uid="uid://dgxmg3bosview" path="res://Assets/Items/Weapons/Sheild/Sheild.blend" id="4_oc658"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6mep6"]
 radius = 0.260183
@@ -29,9 +28,6 @@ shape = SubResource("CapsuleShape3D_6mep6")
 [node name="lmb_wait_timer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
-
-[node name="Sheild" parent="." instance=ExtResource("4_oc658")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.378865, 0, -0.222075)
 
 [connection signal="timeout" from="lmb_wait_timer" to="." method="_on_lmb_wait_timer_timeout"]
 
