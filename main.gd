@@ -74,3 +74,8 @@ func on_boss_room_defeated():
   player.on_victory()
   get_parent().newWorld()
   pass
+
+func set_level(newLevel):
+  level = newLevel
+  player = get_node("Player")
+  player.set_level(level)

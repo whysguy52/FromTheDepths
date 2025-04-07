@@ -75,3 +75,21 @@ drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 empty_selection_clipboard_enabled = false
+
+[node name="NextLevelSign" type="TextEdit" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 473.0
+offset_top = 38.0
+offset_right = -475.0
+offset_bottom = 97.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "NEXT LEVEL!!!"
+
+[node name="NextLevelNotificationTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="NextLevelNotificationTimer" to="." method="_on_next_level_notification_timer_timeout"]

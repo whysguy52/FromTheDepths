@@ -5,6 +5,7 @@ var mouseSens = 0.0005
 var speed = 250
 var isHit = false
 var hp = 5
+var level = 1
 
 #references
 var cameraNod
@@ -133,3 +134,7 @@ func _on_lmb_wait_timer_timeout() -> void:
 func _on_i_frame_timer_timeout() -> void:
   isHit = false
   visible = true
+
+func set_level(newLevel):
+  level = newLevel
+  $hud.set_level(level)

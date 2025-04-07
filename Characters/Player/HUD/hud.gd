@@ -27,3 +27,8 @@ func damage_hud():
     return
   heartContainers[heartIndex].visible = false
   heartIndex -= 1
+
+
+func _on_next_level_notification_timer_timeout() -> void:
+  $NextLevelSign.visible = false
+  pass # Replace with function body.
