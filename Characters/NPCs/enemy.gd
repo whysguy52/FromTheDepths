@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Enemy_class
 
 var isFlying:bool
 var type:String
