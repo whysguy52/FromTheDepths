@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://tgd4tkxmelyf"]
+
+[ext_resource type="Texture2D" uid="uid://dkp0lig3am7vo" path="res://Characters/Player/HUD/heartFiller.png" id="1_50qy5"]
+[ext_resource type="Texture2D" uid="uid://q4fovuw3j8xa" path="res://Characters/Player/HUD/HeartContainer.png" id="1_r4qvf"]
+
+[node name="HeartContainer" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_r4qvf")
+
+[node name="HeartFiller" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_50qy5")

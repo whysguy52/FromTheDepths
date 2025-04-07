@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://dgxmg3bosview" path="res://Assets/Items/Weapons/Sheild/Sheild.blend" id="1_xhdys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvym4"]
-size = Vector3(0.1, 1, 0.5)
+size = Vector3(0.1, 0.999573, 0.6)
 
 [node name="Shield" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501882, -0.0505254, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, -0.0611877, -0.001)
 shape = SubResource("BoxShape3D_wvym4")
 
 [node name="Sheild" parent="." instance=ExtResource("1_xhdys")]

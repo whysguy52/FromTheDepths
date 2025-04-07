@@ -71,5 +71,5 @@ func get_player():
   return player
 
 func on_boss_room_defeated():
-  print("LEVEL COMPLETE")
+  player.on_victory()
   pass

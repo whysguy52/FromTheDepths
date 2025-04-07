@@ -13,25 +13,25 @@ var alreadyEntered = false
 var enemyCount = -1
 var level = 1
 var isBossRoom = false
-
+var isJustDefeated = false #so it doesn't call repeatedly
 
 var bat = load("res://Characters/NPCs/bat/bat.tscn")
 var enemyOptions = [bat] # only 1 enemy type but here in case i make more
-signal boss_defeat_signal
+
 
 func _ready():
   collect_detectors()
   collect_door_frames()
   collect_door_ways()
   collect_door_colliders()
-  #boss_defeat_signal.connect()
   pass
 
 func _process(delta):
   if !alreadyEntered:
     return
   enemyCount = $EnemyController.get_child_count()
-  if enemyCount == 0:
+  if enemyCount == 0 and !isJustDefeated:
+    isJustDefeated = !isJustDefeated
     on_room_defeated()
   pass
 
@@ -105,8 +105,8 @@ func create_enemies():
     var enemyIndex = randi() % enemyOptions.size()
     var newEnemy = enemyOptions[enemyIndex].instantiate()
     newEnemy.set_level(level)
-    newEnemy.position.x = randf() * 10.0 - 5
-    newEnemy.position.z = randf() * 10.0 - 5
+    newEnemy.position.x = randf() * 9.0 - 5 # 9x9m to prevent spawning in walls
+    newEnemy.position.z = randf() * 9.0 - 5
     if newEnemy.isFlying == true:
       newEnemy.position.y = 1
     else:

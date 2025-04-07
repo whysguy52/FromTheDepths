@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w23hw"]
 radius = 0.0481405
-height = 0.358569
+height = 0.513348
 
 [node name="Sword" type="Area3D"]
 script = ExtResource("1_4f6fs")
@@ -13,7 +13,7 @@ script = ExtResource("1_4f6fs")
 [node name="sword_basic" parent="." instance=ExtResource("1_w23hw")]
 
 [node name="hit_box" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.335639, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385445, 0)
 shape = SubResource("CapsuleShape3D_w23hw")
 disabled = true
 

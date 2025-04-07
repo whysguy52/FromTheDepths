@@ -4,7 +4,7 @@ extends CharacterBody3D
 var mouseSens = 0.0005
 var speed = 250
 var isHit = false
-var hp = 3
+var hp = 5
 
 #references
 var cameraNod
@@ -104,6 +104,7 @@ func take_damage():
     return
   else:
     hp -= 1
+    $hud.damage_hud()
     if hp == 0:
       print("you lose")
       #queue_free() #don't do for player as this will close the game camera
@@ -119,6 +120,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     _:
       $lmb_wait_timer.start()
   return
+
+func on_victory():
+  $hud/LevelCompleteSign.visible = true
+
 
 func _on_lmb_wait_timer_timeout() -> void:
   animPlayer.play("Idle")
