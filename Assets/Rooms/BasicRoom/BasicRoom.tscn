@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1h0x31qje14x"]
+[gd_scene load_steps=15 format=3 uid="uid://d1h0x31qje14x"]
 
 [ext_resource type="PackedScene" uid="uid://hci3keyqh4dh" path="res://Assets/Rooms/BasicRoom/BasicRoom.blend" id="1_kjxkq"]
 [ext_resource type="Script" uid="uid://bnlg8gty0dim5" path="res://Assets/Rooms/BasicRoom/basic_room.gd" id="1_m7l6p"]
@@ -11,6 +11,24 @@
 size = Vector3(10, 1, 10)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m7l6p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jch0h"]
+size = Vector3(4.13223, 4, 0.001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbrm2"]
+size = Vector3(1.16775, 4, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhkhf"]
+size = Vector3(1.11209, 4, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lics5"]
+size = Vector3(1.28456, 4, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lngxh"]
+size = Vector3(1.13656, 4, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjphh"]
+size = Vector3(8, 4, 8)
 
 [node name="BasicRoom" type="StaticBody3D"]
 script = ExtResource("1_m7l6p")
@@ -54,6 +72,66 @@ script = ExtResource("6_hbrm2")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Checker4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, -0.5, 1.19209e-07)
 shape = SubResource("SphereShape3D_m7l6p")
+
+[node name="Walls" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66602, 2, 4.9)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68398, 2, 4.89651)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71611, 2, -4.90584)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2, -4.90022)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.90965, 2, -2.7)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.9011, 2, 2.6)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.90137, 2, -2.7)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.90992, 2, 2.6)
+shape = SubResource("BoxShape3D_jch0h")
+
+[node name="DoorCollide1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00792122, 2, 4.90312)
+visible = false
+shape = SubResource("BoxShape3D_hbrm2")
+
+[node name="DoorCollide2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.90292, 2, -0.051728)
+visible = false
+shape = SubResource("BoxShape3D_rhkhf")
+
+[node name="DoorCollide3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0216506, 2, -4.9059)
+visible = false
+shape = SubResource("BoxShape3D_lics5")
+
+[node name="DoorCollide4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.90253, 2, -0.0491661)
+visible = false
+shape = SubResource("BoxShape3D_lngxh")
+
+[node name="ArenaArea" type="Area3D" parent="."]
+
+[node name="ArenaCollider" type="CollisionShape3D" parent="ArenaArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205688, 1.99396, 0.0464249)
+shape = SubResource("BoxShape3D_qjphh")
 
 [connection signal="body_entered" from="Checker1" to="Checker1" method="_on_body_entered"]
 [connection signal="body_entered" from="Checker2" to="Checker2" method="_on_body_entered"]

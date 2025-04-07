@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckndvs2uu3xqd"]
+
+[ext_resource type="PackedScene" uid="uid://qiqych5lgiia" path="res://Characters/NPCs/boss1/boss1.blend" id="1_4bd1i"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fj7r7"]
+radius = 0.0507813
+
+[node name="Boss1" type="CharacterBody3D"]
+
+[node name="boss1" parent="." instance=ExtResource("1_4bd1i")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+shape = SubResource("CylinderShape3D_fj7r7")
+
+[editable path="boss1"]
