@@ -12,7 +12,3 @@ func newWorld():
   destroyer.call_deferred("free")
   currentWorld = mainWorld.instantiate()
   add_child(currentWorld)
-  #currentWorld.queue_free()
-  #currentWorld = mainWorld.instantiate()
-  #currentWorld.name = "Main"
-  #add_child(currentWorld)
