@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1h0x31qje14x"]
+[gd_scene load_steps=9 format=3 uid="uid://d1h0x31qje14x"]
 
 [ext_resource type="PackedScene" uid="uid://hci3keyqh4dh" path="res://Assets/Rooms/BasicRoom/BasicRoom.blend" id="1_kjxkq"]
 [ext_resource type="Script" uid="uid://bnlg8gty0dim5" path="res://Assets/Rooms/BasicRoom/basic_room.gd" id="1_m7l6p"]
+[ext_resource type="Script" uid="uid://b5kupu1d51csg" path="res://Assets/Rooms/BasicRoom/checker_1.gd" id="3_ymm3i"]
+[ext_resource type="Script" uid="uid://boh3lv73kvwgp" path="res://Assets/Rooms/BasicRoom/checker_2.gd" id="4_pfhik"]
+[ext_resource type="Script" uid="uid://dwo5ud768jydk" path="res://Assets/Rooms/BasicRoom/checker_3.gd" id="5_jch0h"]
+[ext_resource type="Script" uid="uid://bc3ovuqm112rg" path="res://Assets/Rooms/BasicRoom/checker_4.gd" id="6_hbrm2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjxkq"]
 size = Vector3(10, 1, 10)
@@ -20,32 +24,38 @@ shape = SubResource("BoxShape3D_kjxkq")
 [node name="BasicRoom" parent="." instance=ExtResource("1_kjxkq")]
 
 [node name="Checker1" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 5.1)
+script = ExtResource("3_ymm3i")
 
 [node name="CollisionShape3D1" type="CollisionShape3D" parent="Checker1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.53674e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0.600001)
 shape = SubResource("SphereShape3D_m7l6p")
 
 [node name="Checker2" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, 0, 0)
+script = ExtResource("4_pfhik")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Checker2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.78814e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1.78814e-07)
 shape = SubResource("SphereShape3D_m7l6p")
 
 [node name="Checker3" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78814e-07, 0, -5.7)
+script = ExtResource("5_jch0h")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Checker3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("SphereShape3D_m7l6p")
 
 [node name="Checker4" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 0, 0)
+script = ExtResource("6_hbrm2")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Checker4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 1.19209e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, -0.5, 1.19209e-07)
 shape = SubResource("SphereShape3D_m7l6p")
 
-[connection signal="body_entered" from="Checker1" to="." method="_on_checker_1_body_entered"]
-
-[editable path="BasicRoom"]
+[connection signal="body_entered" from="Checker1" to="Checker1" method="_on_body_entered"]
+[connection signal="body_entered" from="Checker2" to="Checker2" method="_on_body_entered"]
+[connection signal="body_entered" from="Checker3" to="Checker3" method="_on_body_entered"]
+[connection signal="body_entered" from="Checker4" to="Checker4" method="_on_body_entered"]
