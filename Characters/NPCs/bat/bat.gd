@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends "res://Characters/NPCs/enemy.gd"
 
 @export var level = 1
 var isWaiting = true
@@ -7,22 +7,24 @@ var dashSpeed
 
 #references
 var anim_player:AnimationPlayer
-var player
 var waitTimer
 var dashTimer
 
 func _ready():
+
   anim_player = $"bat/AnimationPlayer"
-  player = $"../Player"
+  player = get_node("/root/Main/Player")
   waitTimer = $WaitTimer
   dashTimer = $DashTimer
-
+  isFlying = true
+  type = "bat"
   anim_player.play("flap")
   waitTimer.wait_time = randi() % 5 + 5 #between 5 and 10 seconds
   waitTimer.start()
 
   dashTimer.wait_time = 1 - (level * 0.1 )
   dashSpeed = 100 * (level - 1) + 500
+
 
 
 func _process(_delta: float) -> void:

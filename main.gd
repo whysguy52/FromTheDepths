@@ -8,12 +8,15 @@ var gridWidth = 10
 var gridHeight = 10
 var level = 1
 
+var player
 var row = 3
 var column = 3
 var numOfRooms:int
 
 func _ready() -> void:
   BasicRoom = load("res://Assets/Rooms/BasicRoom/BasicRoom.tscn")
+  player = get_node("Player")
+
   #create the 2D array
   for i in gridWidth:
     roomGrid.append([])
@@ -61,3 +64,6 @@ func createRoom():
   roomGrid[row][column].position.x = column*10
   $RoomsList.add_child(roomGrid[row][column])
   pass
+
+func get_player():
+  return player

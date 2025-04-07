@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c77rg1kbrkq40"]
+[gd_scene load_steps=7 format=3 uid="uid://c77rg1kbrkq40"]
 
 [ext_resource type="Script" uid="uid://dbjf148nhh6lt" path="res://main.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://d1h0x31qje14x" path="res://Assets/Rooms/BasicRoom/BasicRoom.tscn" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://vy527gfvfjxc" path="res://Characters/Player/Player.tscn" id="2_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://c7wk186x36kuu" path="res://Characters/NPCs/bat/bat.tscn" id="4_cm0pq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_glv2v"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -29,7 +28,7 @@ shadow_enabled = true
 environment = SubResource("Environment_r0du0")
 
 [node name="TestCamera" type="Camera3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 40.1481, 40, 22.7956)
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 23.1481, 13, 39.7956)
 projection = 1
 fov = 112.5
 size = 45.1686
@@ -42,6 +41,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 20)
 
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 22)
-
-[node name="Bat" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 30, 1, 16)

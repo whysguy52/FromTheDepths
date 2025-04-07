@@ -7,13 +7,22 @@ var roomCheck = [0,0,0,0]
 var doorWays = [0,0,0,0]
 var doorFrames = [0,0,0,0]
 var doorCollider = [0,0,0,0]
-var arraySize = 4
+
+var isDefeated = false
+var enemyCount = 0
+var level = 1
+
+var bat = load("res://Characters/NPCs/bat/bat.tscn")
+var enemyOptions = [bat]
+
 
 func _ready():
   collect_detectors()
   collect_door_frames()
   collect_door_ways()
   collect_door_colliders()
+
+  create_enemies()
   pass
 
 func set_room_number(myNum):
@@ -46,35 +55,50 @@ func collect_door_colliders():
   doorCollider[3].disabled = true
   pass
 
-
 func collect_detectors():
   roomCheck[0] = $Checker1
   roomCheck[1] = $Checker2
   roomCheck[2] = $Checker3
   roomCheck[3] = $Checker4
 
-
+func on_room_defeated():
+  open_doors()
 
 func _on_arena_area_body_entered(body: Node3D) -> void:
-  if body.name == "Player":
-    print("room#: " + str(room_number))
-    $DoorCollide1.set_deferred("disabled",false)
-
-    $DoorCollide2.set_deferred("disabled",false)
-    $DoorCollide3.set_deferred("disabled",false)
-    $DoorCollide4.set_deferred("disabled",false)
-    for i in doorFrames.size():
-      if doorFrames[i].visible == true:
-        doorWays[i].visible = true
+  if body.name == "Player" and isDefeated == false:
+    close_doors()
+    create_enemies()
   pass # Replace with function body.
 
 func open_doors():
+  isDefeated = true
   for i in doorFrames.size():
     if doorFrames[i].visible == true:
       doorWays[i].visible = false
       doorCollider[i].set_deferred("disabled",true)
 
+func close_doors():
+  $DoorCollide1.set_deferred("disabled",false)
+  $DoorCollide2.set_deferred("disabled",false)
+  $DoorCollide3.set_deferred("disabled",false)
+  $DoorCollide4.set_deferred("disabled",false)
+  for i in doorFrames.size():
+    if doorFrames[i].visible == true:
+      doorWays[i].visible = true
 
+func create_enemies():
+  var numOfEnemies = randi() % int(10 * level * 0.3) + 1
+  for i in numOfEnemies:
+    var enemyIndex = randi() % enemyOptions.size()
+    var newEnemy = enemyOptions[enemyIndex].instantiate()
+    newEnemy.position.x = randf() * 5.0
+    newEnemy.position.z = randf() * 5.0
+    if newEnemy.isFlying == true:
+      newEnemy.position.y = 1
+    else:
+      newEnemy.position.y = 0
+    $EnemyController.add_child(newEnemy)
+  pass
 func _on_test_trigger_body_entered(body: Node3D) -> void:
   if body.name != "Player":
     return
