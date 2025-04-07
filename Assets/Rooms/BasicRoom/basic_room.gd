@@ -21,8 +21,6 @@ func _ready():
   collect_door_frames()
   collect_door_ways()
   collect_door_colliders()
-
-  create_enemies()
   pass
 
 func set_room_number(myNum):
@@ -65,6 +63,7 @@ func on_room_defeated():
   open_doors()
 
 func _on_arena_area_body_entered(body: Node3D) -> void:
+
   if body.name == "Player" and isDefeated == false:
     close_doors()
     create_enemies()
@@ -88,11 +87,13 @@ func close_doors():
 
 func create_enemies():
   var numOfEnemies = randi() % int(10 * level * 0.3) + 1
+  print(numOfEnemies)
   for i in numOfEnemies:
     var enemyIndex = randi() % enemyOptions.size()
     var newEnemy = enemyOptions[enemyIndex].instantiate()
-    newEnemy.position.x = randf() * 5.0
-    newEnemy.position.z = randf() * 5.0
+    newEnemy.set_level(level)
+    newEnemy.position.x = randf() * 10.0 - 5
+    newEnemy.position.z = randf() * 10.0 - 5
     if newEnemy.isFlying == true:
       newEnemy.position.y = 1
     else:

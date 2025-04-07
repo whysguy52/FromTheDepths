@@ -22,6 +22,7 @@ func _ready() -> void:
     roomGrid.append([])
     for j in gridHeight:
       roomGrid[i].append(Node)
+  #create the first room at 3,3
   roomGrid[row][column] = BasicRoom.instantiate()
   roomGrid[row][column].position.z = row*10
   roomGrid[row][column].position.x = column*10

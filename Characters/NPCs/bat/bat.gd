@@ -1,27 +1,31 @@
 extends "res://Characters/NPCs/enemy.gd"
 
-@export var level = 1
+
 var isWaiting = true
 var isDashing = false
 var dashSpeed
+var hp = 3
 
 #references
 var anim_player:AnimationPlayer
 var waitTimer
 var dashTimer
+var iFrameTimer
 
 func _ready():
-
+  #set variables and references
   anim_player = $"bat/AnimationPlayer"
   player = get_node("/root/Main/Player")
   waitTimer = $WaitTimer
   dashTimer = $DashTimer
+  iFrameTimer = $iFrameTimer
   isFlying = true
   type = "bat"
+
+  #initial calculations
   anim_player.play("flap")
   waitTimer.wait_time = randi() % 5 + 5 #between 5 and 10 seconds
   waitTimer.start()
-
   dashTimer.wait_time = 1 - (level * 0.1 )
   dashSpeed = 100 * (level - 1) + 500
 
@@ -45,11 +49,11 @@ func rise(delta):
   position.y = clamp(position.y,0,2)
   pass
 
-func set_level(parentLevel):
-  level = parentLevel
-
-
-
+func take_hit():
+  if iFrameTimer.is_stopped():
+    iFrameTimer.start
+  else:
+    visible = !visible
 #event handlers
 func _on_wait_timer_timeout() -> void:
   waitTimer.wait_time = randi() % 5 + 5 #between 5 and 10 seconds
