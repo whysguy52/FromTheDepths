@@ -42,4 +42,4 @@ far = 50.0
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
 
 [node name="Bat" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2, -3)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, -3)

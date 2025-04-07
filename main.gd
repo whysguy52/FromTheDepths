@@ -3,6 +3,7 @@ extends Node3D
 var BasicRoom
 
 var roomGrid = []
+var roomNumber = 1
 var gridWidth = 10
 var gridHeight = 10
 var level = 1
@@ -54,6 +55,8 @@ func createGrid():
 
 func createRoom():
   roomGrid[row][column] = BasicRoom.instantiate()
+  roomGrid[row][column].set_room_number(roomNumber)
+  roomNumber += 1
   roomGrid[row][column].position.z = row*10
   roomGrid[row][column].position.x = column*10
   $RoomsList.add_child(roomGrid[row][column])

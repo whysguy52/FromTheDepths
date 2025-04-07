@@ -1,55 +1,51 @@
-[gd_scene load_steps=6 format=4 uid="uid://d1h0x31qje14x"]
+[gd_scene load_steps=5 format=3 uid="uid://d1h0x31qje14x"]
 
-[ext_resource type="Texture2D" uid="uid://djrtxx1qxq8pd" path="res://Assets/Rooms/BasicRoom/dirt.png" id="1_kjxkq"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wj7p3"]
-resource_name = "Material"
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-albedo_texture = ExtResource("1_kjxkq")
-roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_bqpo0"]
-_surfaces = [{
-"aabb": AABB(-1, -1, -1, 2, 2, 2),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAwAAAAIAAAAEAAEAAwACAAUABQACAAEABgAAAAMABgADAAUABgAEAAAABQABAAcABgAFAAcABwABAAQABwAEAAYA"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAP///////wAA//8AAAAAAAAAAP//AAAAAP//AAD//wAAAAAAAAAAAAAAAAAA//8AAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_x3fht"]
-resource_name = "BasicRoom_Cube"
-_surfaces = [{
-"aabb": AABB(-1, -1, -1, 2, 2, 2),
-"attribute_data": PackedByteArray("VFWqqgAA//8AAKqqVFX//1RVqaoAAFVVVFVUVQAAqaqpqv7/VVWqqqmqqqpVVf//qapUVVVVqapVVVVVqqqpqlRVVFUAAAAAVFUAAAAAVVWqqlRVVVUAAKmqAABVVVRV"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_wj7p3"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("/////wAAVNUAAP////9U1f///////1TVAAD//wAAVNX//wAA/////wAA////////AAAAAP///////////////wAAAAD//1TVAAD//wAAVNUAAAAAAABU1QAA/////1TVAAAAAAAAVNX//wAA//9U1QAAAAD//1TV//8AAAAAVNX//wAAAABU1f///////1TV//8AAP//VNX/////AABU1QAAAAAAAP+//////wAA/7///wAAAAD/vwAA//8AAP+/VFVUVVRVVFVUVVRVVFVUVf8//7//P/+//z//v/8//7+qqlRVqqpUVaqqVFWqqlRVVNWqKlTVqipU1aoqVNWqKlRVqqpUVaqqVFWqqlRVqqr/f/9//3//f/9//3//f/9/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_bqpo0")
+[ext_resource type="PackedScene" uid="uid://hci3keyqh4dh" path="res://Assets/Rooms/BasicRoom/BasicRoom.blend" id="1_kjxkq"]
+[ext_resource type="Script" uid="uid://bnlg8gty0dim5" path="res://Assets/Rooms/BasicRoom/basic_room.gd" id="1_m7l6p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjxkq"]
 size = Vector3(10, 1, 10)
 
-[node name="BasicRoom" type="StaticBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_m7l6p"]
 
-[node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 2, 0)
-mesh = SubResource("ArrayMesh_x3fht")
-skeleton = NodePath("")
+[node name="BasicRoom" type="StaticBody3D"]
+script = ExtResource("1_m7l6p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_kjxkq")
+
+[node name="EnemyController" type="Node3D" parent="."]
+
+[node name="BasicRoom" parent="." instance=ExtResource("1_kjxkq")]
+
+[node name="Checker1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.7)
+
+[node name="CollisionShape3D1" type="CollisionShape3D" parent="Checker1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.53674e-07)
+shape = SubResource("SphereShape3D_m7l6p")
+
+[node name="Checker2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Checker2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.78814e-07)
+shape = SubResource("SphereShape3D_m7l6p")
+
+[node name="Checker3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78814e-07, 0, -5.7)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Checker3"]
+shape = SubResource("SphereShape3D_m7l6p")
+
+[node name="Checker4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 0, 0)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Checker4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 1.19209e-07)
+shape = SubResource("SphereShape3D_m7l6p")
+
+[connection signal="body_entered" from="Checker1" to="." method="_on_checker_1_body_entered"]
+
+[editable path="BasicRoom"]

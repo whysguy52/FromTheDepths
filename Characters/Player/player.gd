@@ -41,7 +41,7 @@ func _ready() -> void:
   Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
   pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
   pass
 
 func _physics_process(delta: float) -> void:
@@ -61,7 +61,7 @@ func player_camera(event):
 
 func player_movement(delta):
 
-  var direction:Vector3
+  var direction = Vector3(0,0,0)
   var isW = Input.is_action_pressed("key_w")
   var isA = Input.is_action_pressed("key_a")
   var isS = Input.is_action_pressed("key_s")
@@ -88,7 +88,7 @@ func check_mouse_buttons():
     $lmb_wait_timer.stop()
 
 
-func pic_up_weapon(weapon:Node3D):
+func pic_up_weapon(_weapon:Node3D):
   pass
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

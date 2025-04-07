@@ -5,10 +5,17 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7yili"]
 
-[node name="Bat" type="RigidBody3D"]
+[node name="Bat" type="CharacterBody3D"]
 script = ExtResource("1_h4rq7")
 
 [node name="bat" parent="." instance=ExtResource("1_4kwq8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_7yili")
+
+[node name="WaitTimer" type="Timer" parent="."]
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
