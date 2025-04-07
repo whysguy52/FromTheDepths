@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1h0x31qje14x"]
+[gd_scene load_steps=17 format=3 uid="uid://d1h0x31qje14x"]
 
 [ext_resource type="PackedScene" uid="uid://hci3keyqh4dh" path="res://Assets/Rooms/BasicRoom/BasicRoom.blend" id="1_kjxkq"]
 [ext_resource type="Script" uid="uid://bnlg8gty0dim5" path="res://Assets/Rooms/BasicRoom/basic_room.gd" id="1_m7l6p"]
@@ -29,6 +29,10 @@ size = Vector3(1.13656, 4, 0.01)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjphh"]
 size = Vector3(8, 4, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jch0h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2aix"]
 
 [node name="BasicRoom" type="StaticBody3D"]
 script = ExtResource("1_m7l6p")
@@ -109,22 +113,18 @@ shape = SubResource("BoxShape3D_jch0h")
 
 [node name="DoorCollide1" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00792122, 2, 4.90312)
-visible = false
 shape = SubResource("BoxShape3D_hbrm2")
 
 [node name="DoorCollide2" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.90292, 2, -0.051728)
-visible = false
 shape = SubResource("BoxShape3D_rhkhf")
 
 [node name="DoorCollide3" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0216506, 2, -4.9059)
-visible = false
 shape = SubResource("BoxShape3D_lics5")
 
 [node name="DoorCollide4" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.90253, 2, -0.0491661)
-visible = false
 shape = SubResource("BoxShape3D_lngxh")
 
 [node name="ArenaArea" type="Area3D" parent="."]
@@ -133,7 +133,18 @@ shape = SubResource("BoxShape3D_lngxh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205688, 1.99396, 0.0464249)
 shape = SubResource("BoxShape3D_qjphh")
 
+[node name="testTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.740624, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="testTrigger"]
+mesh = SubResource("BoxMesh_jch0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="testTrigger"]
+shape = SubResource("BoxShape3D_r2aix")
+
 [connection signal="body_entered" from="Checker1" to="Checker1" method="_on_body_entered"]
 [connection signal="body_entered" from="Checker2" to="Checker2" method="_on_body_entered"]
 [connection signal="body_entered" from="Checker3" to="Checker3" method="_on_body_entered"]
 [connection signal="body_entered" from="Checker4" to="Checker4" method="_on_body_entered"]
+[connection signal="body_entered" from="ArenaArea" to="." method="_on_arena_area_body_entered"]
+[connection signal="body_entered" from="testTrigger" to="." method="_on_test_trigger_body_entered"]
