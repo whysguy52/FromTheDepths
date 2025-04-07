@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bnxdi51a6ujyh" path="res://Characters/NPCs/bat/bat.gd" id="1_h4rq7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7yili"]
+radius = 0.2
 
 [node name="Bat" type="CharacterBody3D"]
 script = ExtResource("1_h4rq7")

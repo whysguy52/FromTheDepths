@@ -9,7 +9,8 @@ var doorFrames = [0,0,0,0]
 var doorCollider = [0,0,0,0]
 
 var isDefeated = false
-var enemyCount = 0
+var alreadyEntered = false
+var enemyCount = -1
 var level = 1
 
 var bat = load("res://Characters/NPCs/bat/bat.tscn")
@@ -21,6 +22,14 @@ func _ready():
   collect_door_frames()
   collect_door_ways()
   collect_door_colliders()
+  pass
+
+func _process(delta):
+  if !alreadyEntered:
+    return
+  enemyCount = $EnemyController.get_child_count()
+  if enemyCount == 0:
+    on_room_defeated()
   pass
 
 func set_room_number(myNum):
@@ -61,16 +70,19 @@ func collect_detectors():
 
 func on_room_defeated():
   open_doors()
+  isDefeated = true
 
 func _on_arena_area_body_entered(body: Node3D) -> void:
-
+  print(body.name)
+  print(isDefeated)
   if body.name == "Player" and isDefeated == false:
+    print("player entered")
+    alreadyEntered = true
     close_doors()
     create_enemies()
   pass # Replace with function body.
 
 func open_doors():
-  isDefeated = true
   for i in doorFrames.size():
     if doorFrames[i].visible == true:
       doorWays[i].visible = false
@@ -99,7 +111,8 @@ func create_enemies():
     else:
       newEnemy.position.y = 0
     $EnemyController.add_child(newEnemy)
-  pass
+
+
 func _on_test_trigger_body_entered(body: Node3D) -> void:
   if body.name != "Player":
     return

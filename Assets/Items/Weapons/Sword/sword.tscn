@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dwjrrtkl3u676" path="res://Assets/Items/Weapons/Sword/sword_basic.blend" id="1_w23hw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w23hw"]
-radius = 0.032902
+radius = 0.0481405
 height = 0.358569
 
 [node name="Sword" type="Area3D"]
