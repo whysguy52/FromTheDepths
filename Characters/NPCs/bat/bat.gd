@@ -5,6 +5,7 @@ var isWaiting = true
 var isDashing = false
 var dashSpeed
 var hp = 3
+var isHit = false
 
 #references
 var anim_player:AnimationPlayer
@@ -32,6 +33,8 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
+  if isHit:
+    visible = !visible
   pass
 
 func _physics_process(delta: float) -> void:
@@ -50,10 +53,15 @@ func rise(delta):
   pass
 
 func take_hit():
-  if iFrameTimer.is_stopped():
-    iFrameTimer.start
+  if isHit:
+    return
   else:
-    visible = !visible
+    hp -= 1
+    if hp == 0:
+      queue_free()
+    iFrameTimer.start()
+    isHit = true
+
 #event handlers
 func _on_wait_timer_timeout() -> void:
   waitTimer.wait_time = randi() % 5 + 5 #between 5 and 10 seconds
@@ -67,4 +75,10 @@ func _on_dash_timer_timeout() -> void:
   isDashing = false
   isWaiting = true
   velocity = Vector3(0,0,0)
+  pass # Replace with function body.
+
+
+func _on_i_frame_timer_timeout() -> void:
+  isHit = false
+  visible = true
   pass # Replace with function body.
