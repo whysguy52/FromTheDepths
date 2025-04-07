@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
   movement(delta)
 
 func movement(delta):
-  rotate_y(PI/180 * (level * 0.5 + 1))
+  rotate_y(-PI/180 * (level * 0.5 + 1))
   var pointVect = player.global_transform.origin - global_transform.origin
   velocity = pointVect.normalized() * 25 * delta
   move_and_slide()

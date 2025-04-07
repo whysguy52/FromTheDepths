@@ -4,7 +4,7 @@ extends "res://Characters/NPCs/enemy.gd"
 var isWaiting = true
 var isDashing = false
 var dashSpeed
-var hp = 1
+var hp = 3
 var isHit = false
 
 #references
