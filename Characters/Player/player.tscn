@@ -36,4 +36,7 @@ shape = SubResource("CapsuleShape3D_6mep6")
 wait_time = 0.1
 one_shot = true
 
+[node name="iFrameTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="lmb_wait_timer" to="." method="_on_lmb_wait_timer_timeout"]
+[connection signal="timeout" from="iFrameTimer" to="." method="_on_i_frame_timer_timeout"]

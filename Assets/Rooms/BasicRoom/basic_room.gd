@@ -12,16 +12,19 @@ var isDefeated = false
 var alreadyEntered = false
 var enemyCount = -1
 var level = 1
+var isBossRoom = false
+
 
 var bat = load("res://Characters/NPCs/bat/bat.tscn")
-var enemyOptions = [bat]
-
+var enemyOptions = [bat] # only 1 enemy type but here in case i make more
+signal boss_defeat_signal
 
 func _ready():
   collect_detectors()
   collect_door_frames()
   collect_door_ways()
   collect_door_colliders()
+  #boss_defeat_signal.connect()
   pass
 
 func _process(delta):
@@ -71,12 +74,11 @@ func collect_detectors():
 func on_room_defeated():
   open_doors()
   isDefeated = true
+  if isBossRoom:
+    $/root/Main.on_boss_room_defeated()
 
 func _on_arena_area_body_entered(body: Node3D) -> void:
-  print(body.name)
-  print(isDefeated)
   if body.name == "Player" and isDefeated == false:
-    print("player entered")
     alreadyEntered = true
     close_doors()
     create_enemies()
@@ -99,7 +101,6 @@ func close_doors():
 
 func create_enemies():
   var numOfEnemies = randi() % int(10 * level * 0.3) + 1
-  print(numOfEnemies)
   for i in numOfEnemies:
     var enemyIndex = randi() % enemyOptions.size()
     var newEnemy = enemyOptions[enemyIndex].instantiate()
@@ -111,7 +112,6 @@ func create_enemies():
     else:
       newEnemy.position.y = 0
     $EnemyController.add_child(newEnemy)
-
 
 func _on_test_trigger_body_entered(body: Node3D) -> void:
   if body.name != "Player":

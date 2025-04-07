@@ -56,6 +56,7 @@ func createGrid():
           row += 1
           createRoom()
           roomsLeft -= 1
+  roomGrid[row][column].isBossRoom = true
 
 func createRoom():
   roomGrid[row][column] = BasicRoom.instantiate()
@@ -68,3 +69,7 @@ func createRoom():
 
 func get_player():
   return player
+
+func on_boss_room_defeated():
+  print("LEVEL COMPLETE")
+  pass

@@ -80,5 +80,11 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_i_frame_timer_timeout() -> void:
   isHit = false
-  visible = true
+  visible = true #just in case flicker stops on false
+  pass # Replace with function body.
+
+
+func _on_attack_detector_body_entered(body: Node3D) -> void:
+  if body.name == "Player":
+    body.take_damage()
   pass # Replace with function body.

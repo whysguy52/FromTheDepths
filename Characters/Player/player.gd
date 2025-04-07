@@ -3,6 +3,8 @@ extends CharacterBody3D
 
 var mouseSens = 0.0005
 var speed = 250
+var isHit = false
+var hp = 3
 
 #references
 var cameraNod
@@ -10,11 +12,12 @@ var animPlayer:AnimationPlayer
 var handL
 var handR
 
-#scene holders
+#reference holders
 var swordSource
 var heldWeapon
 var heldSheild
 var sheild
+var iFrameTimer
 
 func _ready() -> void:
   #references
@@ -22,6 +25,7 @@ func _ready() -> void:
   handL = $Player2/HandL
   handR = $Player2/HandR
   animPlayer = $Player2/AnimationPlayer
+  iFrameTimer = $iFrameTimer
 
   #load sword
   swordSource = load("res://Assets/Items/Weapons/Sword/sword.tscn")
@@ -42,6 +46,9 @@ func _ready() -> void:
   pass
 
 func _process(_delta: float) -> void:
+  if isHit:
+    visible = !visible
+  pass
   pass
 
 func _physics_process(delta: float) -> void:
@@ -92,6 +99,17 @@ func check_mouse_buttons():
 func pic_up_weapon(_weapon:Node3D):
   pass
 
+func take_damage():
+  if isHit:
+    return
+  else:
+    hp -= 1
+    if hp == 0:
+      print("you lose")
+      #queue_free() #don't do for player as this will close the game camera
+    iFrameTimer.start()
+    isHit = true
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
   match anim_name:
     "Idle":
@@ -106,3 +124,8 @@ func _on_lmb_wait_timer_timeout() -> void:
   animPlayer.play("Idle")
   heldWeapon.get_node("hit_box").disabled = true
   pass # Replace with function body.
+
+
+func _on_i_frame_timer_timeout() -> void:
+  isHit = false
+  visible = true

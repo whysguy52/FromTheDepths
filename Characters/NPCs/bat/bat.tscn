@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7wk186x36kuu"]
+[gd_scene load_steps=5 format=3 uid="uid://c7wk186x36kuu"]
 
 [ext_resource type="PackedScene" uid="uid://c6nnfjamsx5kv" path="res://Characters/NPCs/bat/bat.blend" id="1_4kwq8"]
 [ext_resource type="Script" uid="uid://bnxdi51a6ujyh" path="res://Characters/NPCs/bat/bat.gd" id="1_h4rq7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7yili"]
 radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h4rq7"]
+radius = 0.227545
 
 [node name="Bat" type="CharacterBody3D"]
 script = ExtResource("1_h4rq7")
@@ -21,6 +24,12 @@ shape = SubResource("SphereShape3D_7yili")
 [node name="iFrameTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="AttackDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackDetector"]
+shape = SubResource("SphereShape3D_h4rq7")
+
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="iFrameTimer" to="." method="_on_i_frame_timer_timeout"]
+[connection signal="body_entered" from="AttackDetector" to="." method="_on_attack_detector_body_entered"]
