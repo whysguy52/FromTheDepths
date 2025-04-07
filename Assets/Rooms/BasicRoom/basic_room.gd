@@ -17,6 +17,7 @@ var isJustDefeated = false #so it doesn't call repeatedly
 
 var bat = load("res://Characters/NPCs/bat/bat.tscn")
 var boss = load("res://Characters/NPCs/boss1/boss_1.tscn")
+var ladder = load("res://Assets/Rooms/BasicRoom/ladder.tscn")
 var enemyOptions = [bat] # only 1 enemy type but here in case i make more
 
 
@@ -77,7 +78,9 @@ func on_room_defeated():
   open_doors()
   isDefeated = true
   if isBossRoom:
-    $/root/Level/Main.on_boss_room_defeated()
+    #
+    var newLadder = ladder.instantiate()
+    add_child(newLadder)
 
 func _on_arena_area_body_entered(body: Node3D) -> void:
   get_node("BasicRoom").visible = true

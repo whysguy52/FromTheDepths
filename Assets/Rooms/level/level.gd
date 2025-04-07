@@ -10,8 +10,10 @@ func _ready() -> void:
 func newWorld():
   var destroyer = $Main
   remove_child(destroyer)
-  destroyer.call_deferred("free")
+  destroyer.queue_free()
   currentWorld = mainWorld.instantiate()
   currentLevel += 1
+
   currentWorld.set_level(currentLevel)
   add_child(currentWorld)
+  currentWorld.name = "Main"

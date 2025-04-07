@@ -11,7 +11,7 @@ func _ready():
   player = $/root/Level/Main/Player
   iFrameTimer = $iFrameTimer
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
   if isHit:
     visible = !visible
 

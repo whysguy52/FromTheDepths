@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1h0x31qje14x"]
+[gd_scene load_steps=17 format=3 uid="uid://d1h0x31qje14x"]
 
 [ext_resource type="PackedScene" uid="uid://hci3keyqh4dh" path="res://Assets/Rooms/BasicRoom/BasicRoom.blend" id="1_kjxkq"]
 [ext_resource type="Script" uid="uid://bnlg8gty0dim5" path="res://Assets/Rooms/BasicRoom/basic_room.gd" id="1_m7l6p"]
-[ext_resource type="PackedScene" uid="uid://ckndvs2uu3xqd" path="res://Characters/NPCs/boss1/boss_1.tscn" id="2_hbrm2"]
 [ext_resource type="Script" uid="uid://b5kupu1d51csg" path="res://Assets/Rooms/BasicRoom/checker_1.gd" id="3_ymm3i"]
 [ext_resource type="Script" uid="uid://boh3lv73kvwgp" path="res://Assets/Rooms/BasicRoom/checker_2.gd" id="4_pfhik"]
 [ext_resource type="Script" uid="uid://dwo5ud768jydk" path="res://Assets/Rooms/BasicRoom/checker_3.gd" id="5_jch0h"]
@@ -43,8 +42,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_kjxkq")
 
 [node name="EnemyController" type="Node3D" parent="."]
-
-[node name="Boss1" parent="EnemyController" instance=ExtResource("2_hbrm2")]
 
 [node name="BasicRoom" parent="." instance=ExtResource("1_kjxkq")]
 

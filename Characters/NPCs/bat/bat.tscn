@@ -22,7 +22,6 @@ shape = SubResource("SphereShape3D_7yili")
 [node name="DashTimer" type="Timer" parent="."]
 
 [node name="iFrameTimer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="AttackDetector" type="Area3D" parent="."]
 

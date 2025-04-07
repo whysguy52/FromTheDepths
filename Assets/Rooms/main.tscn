@@ -20,6 +20,9 @@ glow_enabled = true
 [node name="Main" type="Node3D"]
 script = ExtResource("1_477ka")
 
+[node name="Player" parent="." instance=ExtResource("2_477ka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 32)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
@@ -39,6 +42,3 @@ far = 50.0
 [node name="RoomsList" type="Node3D" parent="."]
 
 [node name="BasicRoom" parent="." instance=ExtResource("1_k0gx4")]
-
-[node name="Player" parent="." instance=ExtResource("2_477ka")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 32)

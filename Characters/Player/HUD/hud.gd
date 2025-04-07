@@ -18,7 +18,7 @@ func set_level(toDisplay):
   level = toDisplay
   $LevelText.text = str(level) + "/5"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
   if heartIndex == -1:
     $GameOverSign.visible = true
 
