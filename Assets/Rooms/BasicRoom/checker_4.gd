@@ -8,6 +8,6 @@ func _ready():
   myDoorFrame.visible = false
 
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_body_entered(_body: Node3D) -> void:
   myDoorFrame.visible = true
   pass # Replace with function body.

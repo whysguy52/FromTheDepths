@@ -27,6 +27,7 @@ func _ready() -> void:
   roomGrid[row][column].position.z = row*10
   roomGrid[row][column].position.x = column*10
   $RoomsList.add_child(roomGrid[row][column])
+  @warning_ignore("narrowing_conversion")
   numOfRooms = (randi() % 2) + 5 + (level * 2.6)
   createGrid()
 
@@ -64,6 +65,7 @@ func createRoom():
   roomNumber += 1
   roomGrid[row][column].position.z = row*10
   roomGrid[row][column].position.x = column*10
+  roomGrid[row][column].get_node("BasicRoom").visible = false
   $RoomsList.add_child(roomGrid[row][column])
   pass
 

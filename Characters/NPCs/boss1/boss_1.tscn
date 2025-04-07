@@ -1,16 +1,92 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckndvs2uu3xqd"]
+[gd_scene load_steps=12 format=3 uid="uid://ckndvs2uu3xqd"]
 
 [ext_resource type="PackedScene" uid="uid://qiqych5lgiia" path="res://Characters/NPCs/boss1/boss1.blend" id="1_4bd1i"]
+[ext_resource type="Script" uid="uid://coja0yv2odkup" path="res://Characters/NPCs/boss1/boss_1.gd" id="1_fj7r7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fj7r7"]
+radius = 0.63885
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fj7r7"]
-radius = 0.0507813
+radius = 0.111
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gl1ai"]
+radius = 0.111
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p5c26"]
+radius = 0.111
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mavr1"]
+radius = 0.111
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y4iqt"]
+radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ugkrw"]
+radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_od1ma"]
+radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iss56"]
+radius = 0.1
 
 [node name="Boss1" type="CharacterBody3D"]
+script = ExtResource("1_fj7r7")
 
 [node name="boss1" parent="." instance=ExtResource("1_4bd1i")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+[node name="BodyColisionSphere" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_fj7r7")
+
+[node name="iFrameTimer" type="Timer" parent="."]
+
+[node name="Leg1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leg1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00155306, 1.00666, 0)
 shape = SubResource("CylinderShape3D_fj7r7")
 
-[editable path="boss1"]
+[node name="Leg2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Leg2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_gl1ai")
+
+[node name="Leg3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Leg3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_p5c26")
+
+[node name="Leg4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Leg4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_mavr1")
+
+[node name="leg1Block" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40155, 1.00666, 0)
+shape = SubResource("CylinderShape3D_y4iqt")
+
+[node name="leg1Block2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00155306, 1.00666, -1.4)
+shape = SubResource("CylinderShape3D_ugkrw")
+
+[node name="leg1Block3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39845, 1.00666, 0)
+shape = SubResource("CylinderShape3D_od1ma")
+
+[node name="leg1Block4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00155306, 1.00666, 1.4)
+shape = SubResource("CylinderShape3D_iss56")
+
+[connection signal="timeout" from="iFrameTimer" to="." method="_on_i_frame_timer_timeout"]
+[connection signal="body_entered" from="Leg1" to="." method="_on_leg_body_entered"]
+[connection signal="body_entered" from="Leg2" to="." method="_on_leg_body_entered"]
+[connection signal="body_entered" from="Leg3" to="." method="_on_leg_body_entered"]
+[connection signal="body_entered" from="Leg4" to="." method="_on_leg_body_entered"]

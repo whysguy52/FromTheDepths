@@ -16,6 +16,7 @@ var isBossRoom = false
 var isJustDefeated = false #so it doesn't call repeatedly
 
 var bat = load("res://Characters/NPCs/bat/bat.tscn")
+var boss = load("res://Characters/NPCs/boss1/boss_1.tscn")
 var enemyOptions = [bat] # only 1 enemy type but here in case i make more
 
 
@@ -24,9 +25,10 @@ func _ready():
   collect_door_frames()
   collect_door_ways()
   collect_door_colliders()
+
   pass
 
-func _process(delta):
+func _process(_delta):
   if !alreadyEntered:
     return
   enemyCount = $EnemyController.get_child_count()
@@ -80,6 +82,7 @@ func on_room_defeated():
 func _on_arena_area_body_entered(body: Node3D) -> void:
   if body.name == "Player" and isDefeated == false:
     alreadyEntered = true
+    get_node("BasicRoom").visible = true
     close_doors()
     create_enemies()
   pass # Replace with function body.
@@ -100,13 +103,18 @@ func close_doors():
       doorWays[i].visible = true
 
 func create_enemies():
+  if isBossRoom:
+    var newBoss = boss.instantiate()
+    newBoss.set_level(level)
+    $EnemyController.add_child(newBoss)
+    return
   var numOfEnemies = randi() % int(10 * level * 0.3) + 1
   for i in numOfEnemies:
     var enemyIndex = randi() % enemyOptions.size()
     var newEnemy = enemyOptions[enemyIndex].instantiate()
     newEnemy.set_level(level)
-    newEnemy.position.x = randf() * 9.0 - 5 # 9x9m to prevent spawning in walls
-    newEnemy.position.z = randf() * 9.0 - 5
+    newEnemy.position.x = randf() * 9.0 - 4.5 # 9x9m to prevent spawning in walls
+    newEnemy.position.z = randf() * 9.0 - 4.5 # subtract 1/2 of width/height
     if newEnemy.isFlying == true:
       newEnemy.position.y = 1
     else:
