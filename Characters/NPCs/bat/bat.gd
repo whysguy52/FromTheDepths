@@ -4,7 +4,7 @@ extends "res://Characters/NPCs/enemy.gd"
 var isWaiting = true
 var isDashing = false
 var dashSpeed
-var hp = 3
+var hp = 1
 var isHit = false
 
 #references
@@ -16,7 +16,7 @@ var iFrameTimer
 func _ready():
   #set variables and references
   anim_player = $"bat/AnimationPlayer"
-  player = get_node("/root/Main/Player")
+  player = get_node("/root/Level/Main/Player")
   waitTimer = $WaitTimer
   dashTimer = $DashTimer
   iFrameTimer = $iFrameTimer

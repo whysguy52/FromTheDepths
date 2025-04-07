@@ -6,7 +6,7 @@ var isFlying:bool
 var type:String
 
 var player
-@onready var rootNode = $/root/Main
+@onready var rootNode = $/root/Level/Main
 
 func set_level(parentLevel):
   level = parentLevel

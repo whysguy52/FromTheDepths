@@ -72,4 +72,5 @@ func get_player():
 
 func on_boss_room_defeated():
   player.on_victory()
+  get_parent().newWorld()
   pass

@@ -75,7 +75,7 @@ func on_room_defeated():
   open_doors()
   isDefeated = true
   if isBossRoom:
-    $/root/Main.on_boss_room_defeated()
+    $/root/Level/Main.on_boss_room_defeated()
 
 func _on_arena_area_body_entered(body: Node3D) -> void:
   if body.name == "Player" and isDefeated == false:

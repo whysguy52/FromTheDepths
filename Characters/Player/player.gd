@@ -26,6 +26,7 @@ func _ready() -> void:
   handR = $Player2/HandR
   animPlayer = $Player2/AnimationPlayer
   iFrameTimer = $iFrameTimer
+  $CameraNod/Camera3D.make_current()
 
   #load sword
   swordSource = load("res://Assets/Items/Weapons/Sword/sword.tscn")
@@ -48,8 +49,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
   if isHit:
     visible = !visible
-  pass
-  pass
 
 func _physics_process(delta: float) -> void:
   player_movement(delta)
