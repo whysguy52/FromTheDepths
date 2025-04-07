@@ -11,7 +11,7 @@ var handL
 var handR
 
 #scene holders
-var sword
+var swordSource
 var heldWeapon
 var heldSheild
 var sheild
@@ -24,14 +24,14 @@ func _ready() -> void:
   animPlayer = $Player2/AnimationPlayer
 
   #load sword
-  sword = load("res://Assets/Items/Weapons/Sword/sword.tscn")
-  heldWeapon = sword.instantiate()
+  swordSource = load("res://Assets/Items/Weapons/Sword/sword.tscn")
+  heldWeapon = swordSource.instantiate()
   handR.add_child(heldWeapon)
 
   #load sheild
   sheild = load("res://Assets/Items/Weapons/Sheild/shield.tscn")
-  #heldSheild = sheild.instantiate()
-  #handL.add_child(heldSheild)
+  heldSheild = sheild.instantiate()
+  handL.add_child(heldSheild)
 
   #store animation player
   animPlayer.current_animation = "Idle"
@@ -80,6 +80,7 @@ func check_mouse_buttons():
     animPlayer.assigned_animation = "Idle"
   if Input.is_action_just_pressed("mouse_lmb") and animPlayer.assigned_animation.contains("Idle") :
     animPlayer.play("swing1")
+    heldWeapon.get_node("hit_box").disabled = false
   elif Input.is_action_just_pressed("mouse_lmb") and animPlayer.assigned_animation.contains("swing1"):
     animPlayer.play("swing2")
     $lmb_wait_timer.stop()
@@ -103,4 +104,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_lmb_wait_timer_timeout() -> void:
   animPlayer.play("Idle")
+  heldWeapon.get_node("hit_box").disabled = true
   pass # Replace with function body.
