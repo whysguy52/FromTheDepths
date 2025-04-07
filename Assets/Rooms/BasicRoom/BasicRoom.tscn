@@ -28,7 +28,7 @@ size = Vector3(1.28456, 4, 0.01)
 size = Vector3(1.13656, 4, 0.01)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjphh"]
-size = Vector3(8, 4, 8)
+size = Vector3(8, 3.8, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jch0h"]
 
@@ -130,7 +130,7 @@ shape = SubResource("BoxShape3D_lngxh")
 [node name="ArenaArea" type="Area3D" parent="."]
 
 [node name="ArenaCollider" type="CollisionShape3D" parent="ArenaArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205688, 1.99396, 0.0464249)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_qjphh")
 
 [node name="testTrigger" type="Area3D" parent="."]
