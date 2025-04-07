@@ -126,3 +126,9 @@ func _on_test_trigger_body_entered(body: Node3D) -> void:
     return
   open_doors()
   pass # Replace with function body.
+
+
+func _on_arena_area_body_exited(body: Node3D) -> void:
+  if body.name == "Player":
+    $BasicRoom.visible = false
+  pass # Replace with function body.

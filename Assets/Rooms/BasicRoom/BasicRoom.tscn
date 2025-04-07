@@ -149,4 +149,5 @@ shape = SubResource("BoxShape3D_r2aix")
 [connection signal="body_entered" from="Checker3" to="Checker3" method="_on_body_entered"]
 [connection signal="body_entered" from="Checker4" to="Checker4" method="_on_body_entered"]
 [connection signal="body_entered" from="ArenaArea" to="." method="_on_arena_area_body_entered"]
+[connection signal="body_exited" from="ArenaArea" to="." method="_on_arena_area_body_exited"]
 [connection signal="body_entered" from="testTrigger" to="." method="_on_test_trigger_body_entered"]
