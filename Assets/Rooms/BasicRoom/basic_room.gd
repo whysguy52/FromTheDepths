@@ -80,9 +80,9 @@ func on_room_defeated():
     $/root/Level/Main.on_boss_room_defeated()
 
 func _on_arena_area_body_entered(body: Node3D) -> void:
+  get_node("BasicRoom").visible = true
   if body.name == "Player" and isDefeated == false:
     alreadyEntered = true
-    get_node("BasicRoom").visible = true
     close_doors()
     create_enemies()
   pass # Replace with function body.
