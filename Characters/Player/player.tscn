@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://vy527gfvfjxc"]
+[gd_scene load_steps=8 format=3 uid="uid://vy527gfvfjxc"]
 
 [ext_resource type="Script" uid="uid://bcrixm47jgl1l" path="res://Characters/Player/player.gd" id="1_6mep6"]
 [ext_resource type="PackedScene" uid="uid://dq3sdljl0j84r" path="res://Characters/Player/Player.blend" id="1_ht6wf"]
 [ext_resource type="PackedScene" uid="uid://bc564k4gtdqx2" path="res://Assets/Items/Weapons/Sword/sword.tscn" id="3_aj84o"]
 [ext_resource type="PackedScene" uid="uid://c4jhcbp8wwece" path="res://Assets/Items/Weapons/Sheild/shield.tscn" id="3_oc658"]
 [ext_resource type="PackedScene" uid="uid://cuhnvgqbe7rsy" path="res://Characters/Player/HUD/hud.tscn" id="5_oc658"]
+[ext_resource type="AudioStream" uid="uid://byk1tjyrh7was" path="res://Characters/Player/swish.mp3" id="6_11ham"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6mep6"]
 radius = 0.260183
@@ -40,6 +41,10 @@ one_shot = true
 [node name="iFrameTimer" type="Timer" parent="."]
 
 [node name="hud" parent="." instance=ExtResource("5_oc658")]
+
+[node name="sword_swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_11ham")
+volume_db = -20.0
 
 [connection signal="timeout" from="lmb_wait_timer" to="." method="_on_lmb_wait_timer_timeout"]
 [connection signal="timeout" from="iFrameTimer" to="." method="_on_i_frame_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1h0x31qje14x"]
+[gd_scene load_steps=19 format=3 uid="uid://d1h0x31qje14x"]
 
 [ext_resource type="PackedScene" uid="uid://hci3keyqh4dh" path="res://Assets/Rooms/BasicRoom/BasicRoom.blend" id="1_kjxkq"]
 [ext_resource type="Script" uid="uid://bnlg8gty0dim5" path="res://Assets/Rooms/BasicRoom/basic_room.gd" id="1_m7l6p"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://boh3lv73kvwgp" path="res://Assets/Rooms/BasicRoom/checker_2.gd" id="4_pfhik"]
 [ext_resource type="Script" uid="uid://dwo5ud768jydk" path="res://Assets/Rooms/BasicRoom/checker_3.gd" id="5_jch0h"]
 [ext_resource type="Script" uid="uid://bc3ovuqm112rg" path="res://Assets/Rooms/BasicRoom/checker_4.gd" id="6_hbrm2"]
+[ext_resource type="AudioStream" uid="uid://sykta05kvyem" path="res://Assets/Rooms/BasicRoom/door_slam.mp3" id="7_rhkhf"]
+[ext_resource type="AudioStream" uid="uid://cbu8rteaj76g" path="res://Assets/Rooms/BasicRoom/latch_open.mp3" id="8_lics5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjxkq"]
 size = Vector3(10, 1, 10)
@@ -143,6 +145,12 @@ mesh = SubResource("BoxMesh_jch0h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="testTrigger"]
 shape = SubResource("BoxShape3D_r2aix")
+
+[node name="door_close_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rhkhf")
+
+[node name="door_open_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lics5")
 
 [connection signal="body_entered" from="Checker1" to="Checker1" method="_on_body_entered"]
 [connection signal="body_entered" from="Checker2" to="Checker2" method="_on_body_entered"]

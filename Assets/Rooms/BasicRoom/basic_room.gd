@@ -91,6 +91,7 @@ func _on_arena_area_body_entered(body: Node3D) -> void:
   pass # Replace with function body.
 
 func open_doors():
+  $door_open_audio.play()
   for i in doorFrames.size():
     if doorFrames[i].visible == true:
       doorWays[i].visible = false
@@ -101,6 +102,7 @@ func close_doors():
   $DoorCollide2.set_deferred("disabled",false)
   $DoorCollide3.set_deferred("disabled",false)
   $DoorCollide4.set_deferred("disabled",false)
+  $door_close_audio.play()
   for i in doorFrames.size():
     if doorFrames[i].visible == true:
       doorWays[i].visible = true

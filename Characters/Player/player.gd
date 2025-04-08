@@ -88,9 +88,11 @@ func check_mouse_buttons():
   if Input.is_action_just_pressed("mouse_lmb") and animPlayer.assigned_animation.contains("Idle") :
     animPlayer.play("swing1")
     heldWeapon.get_node("hit_box").disabled = false
+    $sword_swoosh.play()
   elif Input.is_action_just_pressed("mouse_lmb") and animPlayer.assigned_animation.contains("swing1"):
     animPlayer.play("swing2")
     $lmb_wait_timer.stop()
+    $sword_swoosh.play()
   elif Input.is_action_just_pressed("mouse_lmb") and animPlayer.assigned_animation.contains("swing2"):
     animPlayer.play("swing1")
     $lmb_wait_timer.stop()

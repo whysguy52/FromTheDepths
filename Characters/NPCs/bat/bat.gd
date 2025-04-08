@@ -4,7 +4,7 @@ extends "res://Characters/NPCs/enemy.gd"
 var isWaiting = true
 var isDashing = false
 var dashSpeed
-var hp = 1
+var hp = 3
 var isHit = false
 
 #references
@@ -59,6 +59,7 @@ func take_hit():
     return
   else:
     hp -= 1
+    $squek_audio.play()
     if hp == 0:
       queue_free()
     iFrameTimer.start()
@@ -69,6 +70,7 @@ func _on_wait_timer_timeout() -> void:
   waitTimer.wait_time = randi() % 5 + 5 #between 5 and 10 seconds
   isWaiting = false
   dashTimer.start()
+  $squek_audio.play()
   isDashing = true
   pass # Replace with function body.
 
@@ -77,7 +79,7 @@ func _on_dash_timer_timeout() -> void:
   isDashing = false
   isWaiting = true
   velocity = Vector3(0,0,0)
-  pass # Replace with function body.
+
 
 
 func _on_i_frame_timer_timeout() -> void:
